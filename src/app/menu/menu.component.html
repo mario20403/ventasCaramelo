@@ -1,1 +1,40 @@
-<p>menu works!</p>
+
+
+<h1>Menú del Bar</h1>
+
+<div class="menu-container">
+  <div class="platos-container">
+    <h2>Platos disponibles</h2>
+    <ul>
+      <li *ngFor="let plato of platos">
+        <div class="plato-card">
+          <img [src]="plato.imagen" alt="Imagen plato">
+          <div class="plato-details">
+            <h3>{{ plato.nombre }}</h3>
+            <p>Precio: ${{ plato.precio }}</p>
+          </div>
+          <button (click)="agregarAlCarrito(plato)">Agregar al carrito</button>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="carrito-container">
+    <h2>Carrito de compras</h2>
+    <ul>
+      <li *ngFor="let item of carrito">
+        <div class="carrito-item">
+          <img [src]="item.imagen" alt="Imagen plato">
+          <div class="item-details">
+            <h3>{{ item.nombre }}</h3>
+            <p>Precio: ${{ item.precio }}</p>
+            <p>Cantidad: {{ item.cantidad }}</p>
+          </div>
+          <button (click)="eliminarDelCarrito(item)">Eliminar</button>
+        </div>
+      </li>
+    </ul>
+
+    <h3 class="total">Total: ${{ calcularTotal() }}</h3>
+  </div>
+</div>
